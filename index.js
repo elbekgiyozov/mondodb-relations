@@ -1,12 +1,12 @@
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
+import 'dotenv/config'
+import express from 'express'
+import mongoose from 'mongoose'
+
+import categoryRoutes from './routes/categories.js'
+import productRoutes from './routes/products.js'
 
 const app = express()
 app.use(express.json())
-
-const categoryRoutes = require('./routes/categories')
-const productRoutes = require('./routes/products')
 
 app.use('/categories', categoryRoutes)
 app.use('/products', productRoutes)
@@ -14,9 +14,9 @@ app.use('/products', productRoutes)
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
-    console.log('MongoDB connected')
+    console.log('MongoDB ulandi')
     app.listen(process.env.PORT, () => {
-      console.log(`Server running on port ${process.env.PORT}`)
+      console.log(`Server ${process.env.PORT}-portda ishlamoqda`)
     })
   })
   .catch((err) => console.log(err))
